@@ -1,3 +1,1 @@
-print("Hello, left & right")
-
-
+hello from main
