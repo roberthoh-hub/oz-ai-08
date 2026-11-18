@@ -155,5 +155,50 @@ ____
    $ echo "hello" > test.txt (test.txt 파일에 hello 덮어쓰기)
    $ git add . (현재 위치의 모든 파일을 staging area로 올림)
    $ git commit -m "first commit" 
+- feature 브랜치 생성
+   $ git branch feature
+   $ git switch feature
+- 같은 파일 수정
+   $ echo "hello from feature" > test.txt
+   $ git add . (현재 위치의 모든 파일을 staging area로 올림)
+   $ git commit -m "update from feature"
+- main 에서 다시 수정
+   $ git switch main
+   $ echo "hello from main" > test.txt
+   $ git commit -am "update from main"
+___
+* git commit -am : Stage and commit all changes
+  - 두 개의 flag를 조합한 코드임.
+   * -a : all(전부)의 의미. 이미 Git에 의해 버전이 tracking되고 있는 파일들에 변경 사항을 모두 반영함.
+   * -m : commit할 메시지를 특정할 수 있음.
+  - Git 으로 버전을 관리하고 있는 여러 파일의 변경 사항을 한 번에 적용하고 싶을 때
+  - 대규모 프로젝트를 이끌고 있고, 일일이 파일을 commit하기 전에 staging area로 올리기가 어려울 때
+  - 새로운 파일을 추가하지 않고 기존 파일을 수정하는 빠르고 반복적인 commit을 을 진행할 때.
+* git commit -m : Commit with a Message
+  - 짧은 메시지로 빠르게 commit을 바꾸고 싶을 때 사용
+  - 세부적인 설명이 필요하지 않은 작고 독립적인 변경사항에 사용
+  - 협업 환경에서 일하고 있으며, 변경사항을 자주 commit해야 할 경우 사용.
+- 출처: https://dev.to/shyam0118/understanding-gits-m-and-am-options-simplifying-your-commit-workflow-2413
+___
+- 병합 시도
+    $ git merge feature
+- 충돌 내용 확인
+    $ cat test.txt
+- 파일 수정
+    $ vi test.txt
+    $ git commit -am "resolve merge conflict"
+    $ git log --oneline --graph
+### 5.3 Github 기초
+ - Git 저장소를 호스팅하는 서비스
+ - 계정을 만든 뒤 새 repository를 생성하면 원격 저장소 주소가 발급.
+ 
+ - 원격 저장소(remote repository)
+ * 인터넷이 있는 Git 저장소
+ * 여러 사람이 같은 코드를 공유함.
+ * 백업 역할
+ * 협업의 기준점.
+ - 코드
+    $ git remote add origin 원격 주소
+    $ git remote -v (v는 verbose, 원격 주소와 연결이 잘 되었는지 확인.)
 ## 6. 협업 실습
 ## 7. 자주 사용하는 명령어
