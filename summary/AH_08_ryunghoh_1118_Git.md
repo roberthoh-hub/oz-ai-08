@@ -137,8 +137,23 @@
    - 같은 파일의 같은 부분을 서로 다르게 수정하면 충돌이 발생.
    해결 방법:
    1. 충돌 파일을 확인
+    $ cat test.txt
    2. 충돌 코드를 직접 수정
+    $ vi test.txt
    3. 새로운 커밋 생성
- 5. 
+    $ git commit -am "resolve merge conflict"
+    $ git log --oneline --graph
+____ 
+*   b06ff60 (HEAD -> main) resolve merge conflict
+|\  
+| * 3011a58 (feature) update from feature
+* | 7aa4a2c update from main
+|/  
+____
+ 5. Merge conflict 해결
+   $ git init (.git 파일을 폴더 안에 생성)
+   $ echo "hello" > test.txt (test.txt 파일에 hello 덮어쓰기)
+   $ git add . (현재 위치의 모든 파일을 staging area로 올림)
+   $ git commit -m "first commit" 
 ## 6. 협업 실습
 ## 7. 자주 사용하는 명령어
